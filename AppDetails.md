@@ -20,7 +20,7 @@
 - 自分たちの商品を誇張して宣伝することは出来ない
 レビューに対してもレビューを付けることで、不正なレビューを防ぐ
 
-###システム設計
+### システム設計
 レンタルサーバーを借りる
 - フロント React
 - バック  Rails 
@@ -28,3 +28,6 @@
 - デザイン Material-ui figma
 - 独自にアカウントを発行 
 OAuth OpenID connectは使わない予定...特別情報量が多いわけでもないので
+
+### 使えそうなもの
+- React Markdown https://github.com/rexxars/react-markdown (レビュー投稿,表示の際に使いたい)
