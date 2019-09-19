@@ -10,17 +10,27 @@ function Header() {
         <div style = {{flexGrow:1}}>
             <AppBar position="static">
                 <Toolbar>
-                    <Link to = "/">
-                        <Typography 
-                            variant = "h6"
-                            style = {{flexGrow:1}}
-                        > 
-                            Review Site 
-                        </Typography>
+                    <Link 
+                        to = "/" 
+                        style = {{flexGrow:1, textDecoration:"none"}}
+                        underline = "none"
+                    >
+                       
+                            <Typography 
+                                variant = "h6"
+                                style = {{color: "white"}}
+                            > 
+                                Review Site 
+                            </Typography>
+                        
                     </Link>
-                    <Link to = "/login">
-                        <Button color="inherit"> Login </Button>
+                    <Link 
+                        to = "/login"
+                        style = {{textDecoration:"none"}}
+                    >
+                        <Button> Login </Button>
                     </Link>
+            
                 </Toolbar>
             </AppBar>
         </div>
