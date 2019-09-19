@@ -1,0 +1,9 @@
+.RegisterUserBody{
+    margin: 10% 20%;
+    padding: 5%;
+}
+.RegisterUserBox{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+}

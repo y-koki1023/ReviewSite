@@ -41,7 +41,7 @@ function Login() {
                 <div>
                     <Button> Login </Button>
                     <Link 
-                        to = "/register"
+                        to = "/registerUser"
                         style = {{textDecoration:"none"}}
                     >
                         <Button
