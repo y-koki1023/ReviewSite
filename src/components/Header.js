@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 function Header() {
     return(
         <div style = {{flexGrow:1}}>
-            <AppBar position="static">
+            <AppBar position="absolute" >
                 <Toolbar>
                     <Link 
                         to = "/" 
