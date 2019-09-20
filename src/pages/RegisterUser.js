@@ -7,13 +7,17 @@ import Checkbox  from '@material-ui/core/Checkbox'
 import Button from '@material-ui/core/Button'
 
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import '../css/RegisterUser.css'
 
+const uuidv1 = require('uuid/v1');
 
 function RegisterUser () {
+    
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
-    const account_id = "hoge" // uuid
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const account_id = uuidv1()
     const [isAgreed, setAgreed] = useState(false)
 
     const handleTextField = (e,type) => {
@@ -24,6 +28,9 @@ function RegisterUser () {
                 break
             case 'password' :
                 setPassword(e.target.value)
+                break
+            case 'confirmPassword' :
+                setConfirmPassword(e.target.value)
                 break
             default:
         }
@@ -52,6 +59,15 @@ function RegisterUser () {
                         onChange = {(e) => handleTextField(e,'password')}
                         margin="normal"
                     />
+                    <TextField
+                        id="standard-helperText"
+                        label="Confirm Password"
+                        type="password"
+                        value = {confirmPassword}
+                        helperText="パスワードを確認"
+                        onChange = {(e) => handleTextField(e,'confirmPassword')}
+                        margin="normal"
+                    />
                     <div style = {{display:"flex"}}>
                         <Checkbox
                             checked={isAgreed}
@@ -69,6 +85,7 @@ function RegisterUser () {
                     </Button>
                 </div>
             </Paper>
+            <Footer/>
         </div>
     )
 }

@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField'
 import Button  from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import '../css/Login.css'
 
 
@@ -19,7 +20,7 @@ function Login() {
         setPassword(e.target.value)
     }
     return(
-        <div>
+        <div style= {{ position:"reletive"}}>
             <Header/>
             <Paper className = "LoginBody" >
                 <Typography variant="h5"> Login </Typography>
@@ -52,6 +53,7 @@ function Login() {
                     </Link>
                 </div>
             </Paper>
+            <Footer/>
         </div>
     )
 }
