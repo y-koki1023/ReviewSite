@@ -5,6 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import SearchBar from './SearchBar'
+
 function Header() {
     return(
         <div style = {{flexGrow:1}}>
@@ -24,15 +26,16 @@ function Header() {
                             </Typography>
                         
                     </Link>
+                    <SearchBar/>
                     <Link 
                         to = "/login"
                         style = {{textDecoration:"none"}}
                     >
                         <Button> Login </Button>
                     </Link>
-            
                 </Toolbar>
             </AppBar>
+            
         </div>
     )
 }
