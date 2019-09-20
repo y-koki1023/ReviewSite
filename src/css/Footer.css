@@ -1,5 +1,4 @@
 .FooterBody{
-    width:100%;
     height: 30vh;
     background-color : #575555;
     position: relative;
@@ -7,4 +6,5 @@
     left: 0;
     padding-left: 24px;
     padding-right: 24px;
+    margin-right:5px;
 }
