@@ -10,7 +10,7 @@ import SearchBar from './SearchBar'
 function Header() {
     return(
         <div style = {{flexGrow:1}}>
-            <AppBar position="absolute" >
+            <AppBar position="relative" >
                 <Toolbar>
                     <Link 
                         to = "/" 
