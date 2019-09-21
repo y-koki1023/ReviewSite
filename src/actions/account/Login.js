@@ -43,22 +43,25 @@ const getPostsFailure = (error) => {
 }
 
 export const verifyUserInfo = (username, password) => {
-    return (dispatch) => {
-      dispatch(getPostsRequest())
-      return axios.get(`http://localhost:3000/api/v1/account/login?username=${username}&password=${password}`)
-        .then(res =>
-            {
-                if (res.data.result === 'success') {
-                    dispatch(verifySuccess(res.data))
-                }else{
-                    dispatch(verifyFailure())
-                }
-            }
-        ).catch(err => 
-          dispatch(getPostsFailure(err))
-        )
-    }
+  const params = new URLSearchParams();
+  params.append('username',username)
+  params.append('password',password)
+  return (dispatch) => {
+    dispatch(getPostsRequest())
+    return axios.post(`http://localhost:3000/api/v1/account/login`)
+      .then(res =>
+        {
+          if (res.data.result === 'success') {
+              dispatch(verifySuccess(res.data))
+          }else{
+              dispatch(verifyFailure())
+          }
+        }
+      ).catch(err => 
+        dispatch(getPostsFailure(err))
+      )
   }
+}
 
 
 
