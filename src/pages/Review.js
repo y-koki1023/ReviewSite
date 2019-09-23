@@ -13,7 +13,7 @@ function Review(props) {
         <div>
             <Paper>
                 <p> {props.data.title} </p>
-                <ReactMarkdown source = "Hello World"/>
+                <ReactMarkdown source = {props.data.content}/>
                 <p> Tags </p>
             </Paper>
         </div>
