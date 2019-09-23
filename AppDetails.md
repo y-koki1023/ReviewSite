@@ -8,6 +8,12 @@
 - 消費者に特化している
 - テキストベース、URL記載可能
 
+### 使用予定の技術
+- React ... Front
+- Redux, thunk ... Middleware
+- Rails ... ServerSide
+- MySql ... DB
+
 ### ユースケース
 
 #### 一般ユーザー
@@ -21,10 +27,8 @@
 レビューに対してもレビューを付けることで、不正なレビューを防ぐ
 
 ### システム設計
-レンタルサーバーを借りる
-- フロント React
+レンタルサーバーを借りる(予定)
 - バック  Rails 
-- DB Mysql
 - デザイン Material-ui figma
 - 独自にアカウントを発行 
 OAuth OpenID connectは使わない予定...特別情報量が多いわけでもないので
