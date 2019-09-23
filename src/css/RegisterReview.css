@@ -1,0 +1,14 @@
+.RegisterReviewBody{
+    margin-left:20%;
+    margin-right:20%;
+    margin-top: 0%;
+    padding: 5%;
+}
+.RegisterReviewInputField{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column
+}
+.RegisterReviewMarkdown{
+    height:50%;
+}
