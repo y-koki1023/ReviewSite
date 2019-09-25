@@ -48,10 +48,10 @@ export const verifyUserInfo = (username, password) => {
   params.append('password',password)
   return (dispatch) => {
     dispatch(getPostsRequest())
-    return axios.post(`http://localhost:8000/api/v1/account/login`)
+    return axios.post(`http://localhost:8000/api/v1/accounts/login`,params)
       .then(res =>
         {
-          if (res.data.result === 'success') {
+          if (res.data.status === 'SUCCESS') {
               dispatch(verifySuccess(res.data))
           }else{
               dispatch(verifyFailure())

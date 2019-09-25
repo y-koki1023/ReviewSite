@@ -22,7 +22,7 @@ const getPostsFailure = (error) => {
     }
 }
 
-export const registerUserInfo = (username, password,account_id) => {
+export const registerUserInfo = (username, password, account_id) => {
     const params = new URLSearchParams();
     params.append('username',username)
     params.append('password',password)
@@ -30,7 +30,7 @@ export const registerUserInfo = (username, password,account_id) => {
 
     return (dispatch) => {
       dispatch(getPostsRequest())
-      return axios.post(`http://localhost:3000/api/v1/account/register`,params)
+      return axios.post(`http://localhost:8000/api/v1/accounts/register`,params)
         .then( res => 
             dispatch(getPostsSuccess())
         ).catch(err => 

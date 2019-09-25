@@ -2,7 +2,7 @@ import {GET_POSTS_REQUEST, VERIFY_SUCCESS, VERIFY_FAILURE, GET_POSTS_FAILURE} fr
 
 const initialState = {
     account_id: "",
-    account_name : "",
+    username : "",
     isFetching : false
 }
 
@@ -12,10 +12,11 @@ const LoginReducer =  (state = initialState, action) => {
             return {...state, isFetching : true}
             
         case VERIFY_SUCCESS :
+            console.log(action.posts)
             return {...state, 
                 isFetching : false, 
-                account_id: action.posts.json.account_id,
-                account_name: action.posts.json.account_name
+                account_id: action.posts.account_id,
+                username: action.posts.username
             }
         case VERIFY_FAILURE :
             return {...state, 
