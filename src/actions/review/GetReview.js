@@ -26,7 +26,7 @@ const getReviewFailure = (err) =>{
 export const getReview = (reviewID) => {
     return (dispatch) => {
         dispatch(getReviewRequest())
-        return axios.get(`http://localhost:3000/api/v1/review/get/${reviewID}`)
+        return axios.get(`http://localhost:8000/api/v1/review/get/${reviewID}`)
             .then( res => 
                 dispatch(getReviewSuccess(res))
             ).catch(err =>
