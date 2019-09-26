@@ -11,7 +11,7 @@ export const GET_REVIEW_SUCCESS = 'GET_REVIEW_SUCCESS'
 const getReviewSuccess = (res) => {
     return{
         type: GET_REVIEW_SUCCESS,
-        data: res
+        data: res.data
     }
 }
 

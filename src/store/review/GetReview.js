@@ -22,8 +22,8 @@ const getReviewReducer = (state = initialState, action) => {
                 isFetching: false,
                 requestStatus: "success",
                 data: {
-                    title: action.data.title,
-                    content: action.data.content,
+                    title: action.data.review.title,
+                    content: action.data.review.content,
                     tags: action.data.tags 
                 }
             }

@@ -13,13 +13,13 @@ const RegisterReducer = (state = initialState, action) => {
         case GET_REGISTER_USER_SUCCESS: {
             return {...state, 
                 isFetching: false,
-                requestStatus: "success"
+                requestStatus: "SUCCESS"
             }
         } 
         case GET_REGISTER_USER_FAILURE: {
             return {...state, 
                 isFetching: false,
-                requestStatus: "failure",
+                requestStatus: "FAILURE",
                 error: action.error
             } 
         } 

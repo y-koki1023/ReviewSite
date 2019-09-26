@@ -1,23 +1,23 @@
 import axios from 'axios'
 
-export const GET_POSTS_REQUEST = 'GET_POSTS_REQUEST'
-const getPostsRequest = () => {
+export const GET_REGISTER_REVIEW_REQUEST = 'GET_REGISTER_REVIEW_REQUEST'
+const getRegisterReviewRequest = () => {
     return {
-        type: GET_POSTS_REQUEST 
+        type: GET_REGISTER_REVIEW_REQUEST 
     }
 }
 
-export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS'
-const getPostsSuccess = () => {
+export const GET_REGISTER_REVIEW_SUCCESS = 'GET_REGISTER_REVIEW_SUCCESS'
+const getRegisterReviewSuccess = () => {
     return{
-        type: GET_POSTS_SUCCESS,
+        type: GET_REGISTER_REVIEW_SUCCESS,
     }
 }
 
-export const GET_POSTS_FAILURE = 'GET_POSTS_FAILURE'
-const getPostsFailure = (error) => {
+export const GET_REGISTER_REVIEW_FAILURE = 'GET_REGISTER_REVIEW_FAILURE'
+const getRegisterReviewFailure = (error) => {
     return{
-        type: GET_POSTS_FAILURE,
+        type: GET_REGISTER_REVIEW_FAILURE,
         error
     }
 }
@@ -30,12 +30,12 @@ export const postReview = (title, content, tags, account_id) => {
     params.append('account_id',account_id)
     console.log(params)
     return (dispatch) => {
-      dispatch(getPostsRequest())
+      dispatch(getRegisterReviewRequest())
       return axios.post(`http://localhost:8000/api/v1/review/register`,params)
         .then( res => 
-            dispatch(getPostsSuccess())
+            dispatch(getRegisterReviewSuccess())
         ).catch(err => 
-          dispatch(getPostsFailure(err))
+          dispatch(getRegisterReviewFailure(err))
         )
     }
 }
