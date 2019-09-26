@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
@@ -24,6 +24,14 @@ function Login(props) {
         setPassword(e.target.value)
     }
 
+    const handleLoggedIn = () => {
+        if (props.username !== ""){
+            return(
+                <Redirect to="/" />
+            )
+        }
+    }
+
     const displayProgress = () => {
         return  (
             <Modal
@@ -40,9 +48,11 @@ function Login(props) {
                     }}
                 />
             </Modal>)
-}
+    }
+
     return(
         <div style= {{ position:"reletive"}}>
+            {handleLoggedIn()}
             <Header/>
             <Paper className = "LoginBody" >
                 {displayProgress()}
@@ -68,9 +78,7 @@ function Login(props) {
                         to = "/registerUser"
                         style = {{textDecoration:"none"}}
                     >
-                        <Button
-                            classes = {{color: "white"}}
-                        >
+                        <Button>
                             Register
                         </Button>
                     </Link>
@@ -84,7 +92,7 @@ function Login(props) {
 const mapStateToProps = state => {
     return{
         isFetching : state.Login.isFetching,
-        account_name : state.Login.account_name
+        username : state.Login.username
     }
 }
 

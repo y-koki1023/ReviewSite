@@ -1,4 +1,4 @@
-import {GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAILURE} from '../../actions/review/RegisterReview'
+import {GET_REGISTER_REVIEW_REQUEST, GET_REGISTER_REVIEW_SUCCESS, GET_REGISTER_REVIEW_FAILURE} from '../../actions/review/RegisterReview'
 
 const initialState = {
     isFetching : false,
@@ -7,17 +7,17 @@ const initialState = {
 
 const RegisterReducer = (state = initialState, action) => {
     switch(action.type){
-        case GET_POSTS_REQUEST:
+        case GET_REGISTER_REVIEW_REQUEST:
             return {...state,
                 isFetching: true
             }
-        case GET_POSTS_FAILURE:
+        case GET_REGISTER_REVIEW_FAILURE:
             return {...state,
                 isFetching:false,
                 requestStatus: "failure",
                 error: action.error
             }
-        case GET_POSTS_SUCCESS:
+        case GET_REGISTER_REVIEW_SUCCESS:
             return { ...state,
                 isFetching: false,
                 requestStatus: "success"
