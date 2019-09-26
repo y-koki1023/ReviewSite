@@ -24,13 +24,24 @@ function Login(props) {
         setPassword(e.target.value)
     }
 
-    const handleLoggedIn = () => {
+    const handleLogin = () => {
         if (props.username !== ""){
             return(
                 <Redirect to="/" />
             )
         }
+        if (props.requestStatus === 'FAILURE'){
+            return(
+                <Typography 
+                    variant="v3"
+                    color = "error"
+                > 
+                    LOGIN FAILED 
+                </Typography>
+            )
+        }
     }
+
 
     const displayProgress = () => {
         return  (
@@ -52,9 +63,9 @@ function Login(props) {
 
     return(
         <div style= {{ position:"reletive"}}>
-            {handleLoggedIn()}
             <Header/>
             <Paper className = "LoginBody" >
+                {handleLogin()}
                 {displayProgress()}
                 <Typography variant="h5"> Login </Typography>
                 <div className = "LoginTextBox">
@@ -78,7 +89,8 @@ function Login(props) {
                         to = "/registerUser"
                         style = {{textDecoration:"none"}}
                     >
-                        <Button>
+                        <Button
+>
                             Register
                         </Button>
                     </Link>
@@ -92,7 +104,8 @@ function Login(props) {
 const mapStateToProps = state => {
     return{
         isFetching : state.Login.isFetching,
-        username : state.Login.username
+        username : state.Login.username,
+        requestStatus: state.Login.requestStatus
     }
 }
 

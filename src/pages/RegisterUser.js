@@ -47,7 +47,7 @@ function RegisterUser (props) {
                         id="standard-helperText"
                         label="Username"
                         value = {userName}
-                        helperText="Required*"
+                        helperText="必須"
                         onChange = {(e) => handleTextField(e,'username')}
                         margin="normal"
                     />
@@ -56,7 +56,7 @@ function RegisterUser (props) {
                         label="Password"
                         type="password"
                         value = {password}
-                        helperText="半角英字、数字、記号を組み合わせて 8 文字以上で入力してください"
+                        helperText="必須 8文字以上"
                         onChange = {(e) => handleTextField(e,'password')}
                         margin="normal"
                     />
@@ -65,7 +65,7 @@ function RegisterUser (props) {
                         label="Confirm Password"
                         type="password"
                         value = {confirmPassword}
-                        helperText="パスワードを確認"
+                        helperText="パスワード確認"
                         onChange = {(e) => handleTextField(e,'confirmPassword')}
                         margin="normal"
                     />
@@ -82,7 +82,7 @@ function RegisterUser (props) {
                         </Typography>
                     </div>
                     <Button 
-                        disabled = {!isAgreed || password !== confirmPassword}
+                        disabled = {!isAgreed || password !== confirmPassword || password.length < 8}
                         onClick = {() => props.registerUser(userName, password, account_id)}
                     > 
                         Register 

@@ -16,16 +16,18 @@ const LoginReducer =  (state = initialState, action) => {
             return {...state, 
                 isFetching : false, 
                 account_id: action.posts.account_id,
-                username: action.posts.username
+                username: action.posts.username,
+                requestStatus: "SUCCESS"
             }
         case VERIFY_LOGIN_FAILURE :
             return {...state, 
                 isFetching : false, 
-                error : "wrong username or password" 
+                requestStatus: "FAILURE" 
             }
         case GET_LOGIN_FAILURE:
             return {...state, 
-                isFetching : false, 
+                isFetching : false,
+                requestStatus: "FAILURE", 
                 error :　action.error 
             }
         default:
