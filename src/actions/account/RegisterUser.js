@@ -1,23 +1,23 @@
 import axios from 'axios'
 
-export const GET_POSTS_REQUEST = 'GET_POSTS_REQUEST'
-const getPostsRequest = () => {
+export const GET_REGISTER_USER_REQUEST = 'GET_REGISTER_USER_REQUEST'
+const getRegisterUserRequest = () => {
     return {
-        type: GET_POSTS_REQUEST
+        type: GET_REGISTER_USER_REQUEST
     }
 }
 
-export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS'
-const getPostsSuccess = () => {
+export const GET_REGISTER_USER_SUCCESS = 'GET_REGISTER_USER_SUCCESS'
+const getRegisterUserSuccess = () => {
     return{
-        type: GET_POSTS_SUCCESS,
+        type: GET_REGISTER_USER_SUCCESS,
     }
 }
 
-export const GET_POSTS_FAILURE = 'GET_POSTS_FAILURE'
-const getPostsFailure = (error) => {
+export const GET_REGISTER_USER_FAILURE = 'GET_REGISTER_USER_FAILURE'
+const getRegisterUserFailure = (error) => {
     return{
-        type: GET_POSTS_FAILURE,
+        type: GET_REGISTER_USER_FAILURE,
         error
     }
 }
@@ -29,12 +29,12 @@ export const registerUserInfo = (username, password, account_id) => {
     params.append('account_id',account_id)
 
     return (dispatch) => {
-      dispatch(getPostsRequest())
+      dispatch(getRegisterUserRequest())
       return axios.post(`http://localhost:8000/api/v1/accounts/register`,params)
         .then( res => 
-            dispatch(getPostsSuccess())
+            dispatch(getRegisterUserSuccess())
         ).catch(err => 
-          dispatch(getPostsFailure(err))
+          dispatch(getRegisterUserFailure(err))
         )
     }
 }
