@@ -12,32 +12,32 @@
 */
 import axios from 'axios'
 
-export const GET_POSTS_REQUEST = 'GET_POSTS_REQUEST'
-const getPostsRequest = () =>{
+export const GET_LOGIN_REQUEST = 'GET_LOGIN_REQUEST'
+const getLoginRequest = () =>{
     return {
-        type: GET_POSTS_REQUEST
+        type: GET_LOGIN_REQUEST
     }
 }
 
-export const VERIFY_SUCCESS = 'VERIFY_SUCCESS'
-const verifySuccess = (json) => {  
+export const VERIFY_LOGIN_SUCCESS = 'VERIFY_LOGIN_SUCCESS'
+const verifyLoginSuccess = (json) => {  
   return {
-    type: VERIFY_SUCCESS,
+    type: VERIFY_LOGIN_SUCCESS,
     posts: json,
     receivedAt: Date.now()
   }
 }
-export const VERIFY_FAILURE = 'VERIFY_FAILURE'
-const verifyFailure = () => {  
+export const VERIFY_LOGIN_FAILURE = 'VERIFY_LOGIN_FAILURE'
+const verifyLoginFailure = () => {  
     return {
-      type: VERIFY_FAILURE
+      type: VERIFY_LOGIN_FAILURE
     }
   }
 
-export const GET_POSTS_FAILURE = 'GET_POSTS_FAILURE'
-const getPostsFailure = (error) => {
+export const GET_LOGIN_FAILURE = 'GET_LOGIN_FAILURE'
+const getLoginFailure = (error) => {
     return{
-        type: GET_POSTS_FAILURE,
+        type: GET_LOGIN_FAILURE,
         error
     }
 }
@@ -47,18 +47,18 @@ export const verifyUserInfo = (username, password) => {
   params.append('username',username)
   params.append('password',password)
   return (dispatch) => {
-    dispatch(getPostsRequest())
+    dispatch(getLoginRequest())
     return axios.post(`http://localhost:8000/api/v1/accounts/login`,params)
       .then(res =>
         {
           if (res.data.status === 'SUCCESS') {
-              dispatch(verifySuccess(res.data))
+              dispatch(verifyLoginSuccess(res.data))
           }else{
-              dispatch(verifyFailure())
+              dispatch(verifyLoginFailure())
           }
         }
       ).catch(err => 
-        dispatch(getPostsFailure(err))
+        dispatch(getLoginFailure(err))
       )
   }
 }
