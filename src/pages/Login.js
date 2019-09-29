@@ -1,14 +1,13 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import Button  from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography'
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Modal from '@material-ui/core/Modal'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import ProgressModal from '../components/ProgressModal'
 import { verifyUserInfo } from '../actions/account/Login.js'
 import '../css/Login.css'
 
@@ -17,48 +16,57 @@ function Login(props) {
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
 
-    const handleUserName = ( e ) => {
-        setUserName(e.target.value)
-    }
-    const handlePassword = ( e ) => {
-        setPassword(e.target.value)
+    const handleTextField = (e,type) => {
+        switch(type){
+            case 'username' :
+                if ( e.target.value.match( /[^a-zA-Z0-9_!#%&]/ ) === null){
+                    setUserName(e.target.value)
+                }
+                break
+            case 'password' :
+                if ( e.target.value.match( /[^a-zA-Z0-9_!#%&]/ ) === null)setPassword(e.target.value)
+                break
+            default:
+        }
     }
 
-    const displayProgress = () => {
-        return  (
-            <Modal
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-                open={props.isFetching}         
-            >
-                <CircularProgress 
-                    style = {{
-                        position:"absolute",
-                        top:"50%",
-                        left:"50%",
-                        border:"none"
-                    }}
-                />
-            </Modal>)
-}
+    const handleLogin = () => {
+        if (props.username !== ""){
+            return(
+                <Redirect to="/" />
+            )
+        }
+        if (props.requestStatus === 'FAILURE'){
+            return(
+                <Typography 
+                    variant="v3"
+                    color = "error"
+                > 
+                    LOGIN FAILED 
+                </Typography>
+            )
+        }
+    }
+
     return(
         <div style= {{ position:"reletive"}}>
             <Header/>
             <Paper className = "LoginBody" >
-                {displayProgress()}
+                {handleLogin()}
+                <ProgressModal open={props.isFetching}/>
                 <Typography variant="h5"> Login </Typography>
                 <div className = "LoginTextBox">
                     <TextField
                         label="Name"
                         value={userName}
-                        onChange={handleUserName}
+                        onChange={(e) => handleTextField(e,'username')}
                         margin="normal"
                     />
                     <TextField
                         label="Password"
                         value={password}
                         type="password"
-                        onChange={handlePassword}
+                        onChange={(e) => handleTextField(e,'password')}
                         margin="normal"
                     />
                 </div>
@@ -69,8 +77,7 @@ function Login(props) {
                         style = {{textDecoration:"none"}}
                     >
                         <Button
-                            classes = {{color: "white"}}
-                        >
+>
                             Register
                         </Button>
                     </Link>
@@ -84,7 +91,8 @@ function Login(props) {
 const mapStateToProps = state => {
     return{
         isFetching : state.Login.isFetching,
-        account_name : state.Login.account_name
+        username : state.Login.username,
+        requestStatus: state.Login.requestStatus
     }
 }
 

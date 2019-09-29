@@ -1,23 +1,53 @@
 import React, { useEffect } from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import Divider from '@material-ui/core/Divider'
+
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
+import "../css/Review.css"
 import {getReview} from '../actions/review/GetReview'
 
 function Review(props) {
     const {params} = props.match
     useEffect( () => {
         props.receiveReview(params.reviewID)
-    },[params.reviewID, props])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
     return (
         <div>
-            <Paper>
-                <p> {props.data.title} </p>
-                <ReactMarkdown source = {props.data.content}/>
-                <p> Tags </p>
+            <Header/>
+            <Paper className = "ReviewBody">
+                <Typography variant = "h4"> {props.data.title} </Typography>
+
+                {mapTags(props.data.tags)}
+                <Divider/>
+                <ReactMarkdown 
+                    source = {props.data.content}
+                />
+                
             </Paper>
+            <Footer/>
         </div>
     )
+}
+
+const mapTags = (tags) => {
+    return tags.map( (tag,index) => (
+        <Button
+            className = "ReviewTag"
+            key={index}
+            
+        > 
+            {tag.title} 
+        </Button>
+    ))
 }
 const mapStateToProps = state => {
     return {

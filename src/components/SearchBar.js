@@ -8,9 +8,9 @@ function SearchBar() {
         setKeyword(e.target.value)
     }
     return (
-        <div>
+        <div style = {{display:"flex", backgroundColor:"white"}} >
             <InputBase
-                placeholder="Search reviews with categories"
+                placeholder="Search..."
                 value = {keyword}
                 onChange = {handleKeyword}
             />

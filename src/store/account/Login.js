@@ -1,30 +1,33 @@
-import {GET_POSTS_REQUEST, VERIFY_SUCCESS, VERIFY_FAILURE, GET_POSTS_FAILURE} from '../../actions/account/Login.js'
+import {GET_LOGIN_REQUEST, VERIFY_LOGIN_SUCCESS, VERIFY_LOGIN_FAILURE, GET_LOGIN_FAILURE} from '../../actions/account/Login.js'
 
 const initialState = {
     account_id: "",
-    account_name : "",
+    username : "",
     isFetching : false
 }
 
 const LoginReducer =  (state = initialState, action) => {
     switch(action.type){
-        case GET_POSTS_REQUEST :
+        case GET_LOGIN_REQUEST :
             return {...state, isFetching : true}
             
-        case VERIFY_SUCCESS :
+        case VERIFY_LOGIN_SUCCESS :
+            console.log(action.posts)
             return {...state, 
                 isFetching : false, 
-                account_id: action.posts.json.account_id,
-                account_name: action.posts.json.account_name
+                account_id: action.posts.account_id,
+                username: action.posts.username,
+                requestStatus: "SUCCESS"
             }
-        case VERIFY_FAILURE :
+        case VERIFY_LOGIN_FAILURE :
             return {...state, 
                 isFetching : false, 
-                error : "wrong username or password" 
+                requestStatus: "FAILURE" 
             }
-        case GET_POSTS_FAILURE:
+        case GET_LOGIN_FAILURE:
             return {...state, 
-                isFetching : false, 
+                isFetching : false,
+                requestStatus: "FAILURE", 
                 error :　action.error 
             }
         default:
