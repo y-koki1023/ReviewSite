@@ -1,7 +1,9 @@
 import React,{useEffect} from 'react'
 import {connect} from 'react-redux'
 
+import ReviewButton  from '../components/ReviewButton'
 import {getReviewList} from '../actions/review/GetReviewList'
+
 
 function SearchReview (props) {
     const {params} = props.match
@@ -9,10 +11,13 @@ function SearchReview (props) {
         props.receiveReviewList(params.categories,params.page,1)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
-
+    const reviewList = props.reviews.map(review => (
+        <ReviewButton title = {review.title} reviewID = {review.id}/>
+    ))
     return (
-       <div>
+        <div>
            <p> Hello World</p>
+           {reviewList}
         </div>
     )
 }
