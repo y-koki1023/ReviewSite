@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
+import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography';
 import Checkbox  from '@material-ui/core/Checkbox'
 import Button from '@material-ui/core/Button'
+import Modal from '@material-ui/core/Modal'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -22,29 +25,66 @@ function RegisterUser (props) {
     const [isAgreed, setAgreed] = useState(false)
 
     const handleTextField = (e,type) => {
-        console.log(type)
         switch(type){
-            case 'username' : 
-                setUserName(e.target.value)
+            case 'username' :
+                if ( e.target.value.match( /[^a-zA-Z0-9_!#%&]/ ) === null)setUserName(e.target.value)
                 break
             case 'password' :
-                setPassword(e.target.value)
+                if ( e.target.value.match( /[^a-zA-Z0-9_!#%&]/ ) === null)setPassword(e.target.value)
                 break
             case 'confirmPassword' :
-                setConfirmPassword(e.target.value)
+                if ( e.target.value.match( /[^a-zA-Z0-9_!#%&]/ ) === null)setConfirmPassword(e.target.value)
                 break
             default:
         }
+    }
+
+    const handleRequestResult = () => {
+        if (props.requestStatus === "SUCCESS"){
+            return(
+                <Redirect to="/login" />
+            )
+        }
+        if (props.requestStatus === "FAILURE"){
+            return(
+                <Typography 
+                    variant="v3"
+                    color = "error"
+                > 
+                    REGISTRATION FAILED 
+                </Typography>
+            )
+        }
+        
+    }
+
+    const displayProgress = () => {
+        return  (
+            <Modal
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                open={props.isFetching}         
+            >
+                <CircularProgress 
+                    style = {{
+                        position:"absolute",
+                        top:"50%",
+                        left:"50%",
+                        border:"none"
+                    }}
+                />
+            </Modal>)
     }
 
     return (
         <div>
             <Header/>
             <Paper className = "RegisterUserBody">
+                {displayProgress()}
+                {handleRequestResult()}
                 <Typography variant = "h6"> Register </Typography>
                 <div className = "RegisterUserBox">
                     <TextField
-                        id="standard-helperText"
                         label="Username"
                         value = {userName}
                         helperText="必須"
@@ -52,7 +92,6 @@ function RegisterUser (props) {
                         margin="normal"
                     />
                     <TextField
-                        id="standard-helperText"
                         label="Password"
                         type="password"
                         value = {password}
@@ -61,7 +100,6 @@ function RegisterUser (props) {
                         margin="normal"
                     />
                     <TextField
-                        id="standard-helperText"
                         label="Confirm Password"
                         type="password"
                         value = {confirmPassword}
@@ -95,7 +133,8 @@ function RegisterUser (props) {
 }
 const mapStateToProps = state => {
     return{
-        requestStatus : state.RegisterUser.requestStatus
+        requestStatus : state.RegisterUser.requestStatus,
+        isFetching: state.RegisterUser.isFetching
     }
 }
 

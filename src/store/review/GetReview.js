@@ -18,13 +18,14 @@ const getReviewReducer = (state = initialState, action) => {
             }
         }
         case GET_REVIEW_SUCCESS: {
+            console.log(action.json)
             return {...state,
                 isFetching: false,
                 requestStatus: "success",
                 data: {
-                    title: action.data.review.title,
-                    content: action.data.review.content,
-                    tags: action.data.tags 
+                    title: action.json.data.review.title,
+                    content: action.json.data.review.content,
+                    tags: action.json.data.tags 
                 }
             }
         }

@@ -31,7 +31,7 @@ export const postReview = (title, content, tags, account_id) => {
     console.log(params)
     return (dispatch) => {
       dispatch(getRegisterReviewRequest())
-      return axios.post(`http://localhost:8000/api/v1/review/register`,params)
+      return axios.post(`http://localhost:8000/api/v1/reviews/register`,params)
         .then( res => 
             dispatch(getRegisterReviewSuccess())
         ).catch(err => 
