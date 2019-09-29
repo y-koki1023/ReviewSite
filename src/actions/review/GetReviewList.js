@@ -25,9 +25,22 @@ const getReviewListFailure = (err) => {
     }
 } 
 
-export const getReviewList = () => {
+export const getReviewList = (categories, page, limit) => {
+
     return (dispatch) => {
         dispatch(getReviewListRequest())
-        return axios.get(`http://localhost:8000/api/v1/reviews/get/${reviewID}`)
+        return axios.get(`http://localhost:8000/api/v1/reviews/getList`,
+            { params: {
+                    categories: categories,
+                    page: page,
+                    limit: limit
+                }
+            }
+        )
+            .then(res => 
+                dispatch(getReviewListSuccess(res))
+            ).catch(err =>
+                dispatch(getReviewListFailure(err))
+            )
     }
 }
