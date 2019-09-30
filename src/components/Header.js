@@ -16,9 +16,12 @@ function Header(props) {
     const handleLoggedIn = () => {
         if (props.username !== ""){
             return(
-                <Link to = {`/profile/${props.username}`} >
-                    <Typography variant = "body1"> {props.username} </Typography>
-                </Link>
+                <div style = {{display:"flex"}}>
+                    <Link to = {`/profile/${props.username}`} >
+                        <Typography variant = "body1"> {props.username} </Typography>
+                    </Link>
+                    <RegisterReview/>
+                </div>
             )
         }else{
             return(
@@ -42,7 +45,7 @@ function Header(props) {
                         </Typography>
                     </Link>
                     <SearchBar/>
-                    <RegisterReview/>
+                    
                     {handleLoggedIn()}
                 </Toolbar>
             </AppBar>
