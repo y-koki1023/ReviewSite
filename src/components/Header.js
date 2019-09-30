@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider'
 import SearchBar from './SearchBar'
 import RegisterReview from './RegisterReview'
-
+import "../css/Header.css"
 
 
 function Header(props) {
@@ -33,7 +33,7 @@ function Header(props) {
     }
 
     return(
-        <div style = {{flexGrow:1}}>
+        <div className = "HeaderWrapper" style = {{flexGrow:1}}>
             <AppBar position="relative" >
                 <Toolbar>
                     <Link to = "/" underline = "none" style = {{flexGrow:1}}>
@@ -46,7 +46,6 @@ function Header(props) {
                     {handleLoggedIn()}
                 </Toolbar>
             </AppBar>
-            
         </div>
     )
 }

@@ -14,7 +14,7 @@ function RouterView () {
             <Route path="/RegisterUser" component={RegisterUser}/>
             <Route path="/RegisterReview" component={RegisterReview}/>
             <Route path="/Review/:reviewID" component={Review}/>
-            <Route path="/Search/:categories" component={SearchReview}/>
+            <Route path="/SearchReview/:categories/:page" component={SearchReview}/>
         </Router>
     )
 }
