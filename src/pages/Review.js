@@ -21,7 +21,7 @@ function Review(props) {
     },[])
 
     return (
-        <div>
+        <div className = "ReviewWrapper">
             <Header/>
             <Paper className = "ReviewBody">
                 <Typography variant = "h4"> {props.data.title} </Typography>

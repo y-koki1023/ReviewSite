@@ -6,11 +6,10 @@ import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography';
 import Checkbox  from '@material-ui/core/Checkbox'
 import Button from '@material-ui/core/Button'
-import Modal from '@material-ui/core/Modal'
-import CircularProgress from '@material-ui/core/CircularProgress'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import ProgressModal from '../components/ProgressModal'
 import {registerUserInfo} from '../actions/account/RegisterUser'
 import '../css/RegisterUser.css'
 
@@ -58,29 +57,11 @@ function RegisterUser (props) {
         
     }
 
-    const displayProgress = () => {
-        return  (
-            <Modal
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-                open={props.isFetching}         
-            >
-                <CircularProgress 
-                    style = {{
-                        position:"absolute",
-                        top:"50%",
-                        left:"50%",
-                        border:"none"
-                    }}
-                />
-            </Modal>)
-    }
-
     return (
-        <div>
+        <div className = "RegisterUserWrapper">
             <Header/>
             <Paper className = "RegisterUserBody">
-                {displayProgress()}
+                <ProgressModal open = {props.isFetching}/>
                 {handleRequestResult()}
                 <Typography variant = "h6"> Register </Typography>
                 <div className = "RegisterUserBox">

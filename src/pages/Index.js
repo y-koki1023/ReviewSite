@@ -8,7 +8,7 @@ import { Typography } from '@material-ui/core';
 
 function Index() {
     return(
-        <div>
+        <div className = "IndexWrapper">
             <Header/>
             <div style={{position:"relative",marginTop:"2%",marginBottom:"5%"}}>
                 <div className = "IndexBlurBg">

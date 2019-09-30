@@ -40,7 +40,7 @@ function RegisterReview(props) {
     }
 
     return(
-        <div>
+        <div className = "RegisterReviewWrapper">
             <ProgressModal open = {props.isFetching}/>
             <Header/>
             <div className = "RegisterReviewBody">
