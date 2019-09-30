@@ -6,7 +6,7 @@ function ReviewButton (props) {
     return(
         <div>
             <Link to = {`/Review/${props.reviewID}`}>
-                <Typography variant = "h4"> {props.title} </Typography>
+                <Typography variant = {props.variant}> {props.title} </Typography>
             </Link>
             <Divider/>
         </div>

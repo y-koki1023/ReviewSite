@@ -6,6 +6,7 @@
     box-sizing: border-box;
 }
 .ReviewBody{
+    min-height:60vh;
     margin-left:20%;
     margin-right:20%;
     margin-top: 0%;

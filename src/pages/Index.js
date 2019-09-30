@@ -1,12 +1,21 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import {connect} from 'react-redux'
 import Paper from '@material-ui/core/Paper'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import "../css/Index.css"
 import Divider  from '@material-ui/core/Divider';
 import { Typography } from '@material-ui/core';
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import ReviewLists from '../components/ReviewLists'
+import {getReviewList} from '../actions/review/GetReviewList'
 
-function Index() {
+import "../css/Index.css"
+
+
+function Index(props) {
+    useEffect( () => {
+        props.receiveReviewList(" ",1,10)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
     return(
         <div className = "IndexWrapper">
             <Header/>
@@ -21,7 +30,7 @@ function Index() {
             <div className="IndexContentBox">
                 <Paper className = "IndexContent">
                     <Typography variant="body1">
-                        Latest Reviews
+                        WIP
                     </Typography>
                 </Paper>
                 <Divider orientation="vertical"/>
@@ -29,11 +38,12 @@ function Index() {
                     <Typography variant="body1">
                         Latest Reviews
                     </Typography>
+                    <ReviewLists reviews={props.reviews} variant="body1"/>
                 </Paper>
                 <Divider orientation="vertical"/>
                 <Paper className = "IndexContent">
                     <Typography variant="body1">
-                        Latest Reviews
+                        WIP
                     </Typography>
                 </Paper>
             </div>
@@ -43,4 +53,16 @@ function Index() {
     )
 }
 
-export default Index
+const mapStateToProps = state => {
+    return {
+        reviews : state.GetReviewList.reviews
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return{
+        receiveReviewList : (categories, page, limit) => dispatch(getReviewList(categories, page, limit))
+    }
+}
+
+export default  connect(mapStateToProps,mapDispatchToProps)(Index)
