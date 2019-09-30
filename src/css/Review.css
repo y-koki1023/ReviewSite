@@ -1,4 +1,12 @@
+.ReviewWrapper{
+    min-height: 100vh;
+    position: relative;
+    padding-top: 10vh;
+    padding-bottom: 30vh;
+    box-sizing: border-box;
+}
 .ReviewBody{
+    min-height:60vh;
     margin-left:20%;
     margin-right:20%;
     margin-top: 0%;

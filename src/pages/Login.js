@@ -49,7 +49,7 @@ function Login(props) {
     }
 
     return(
-        <div style= {{ position:"reletive"}}>
+        <div className = "LoginWrapper">
             <Header/>
             <Paper className = "LoginBody" >
                 {handleLogin()}
@@ -76,8 +76,7 @@ function Login(props) {
                         to = "/registerUser"
                         style = {{textDecoration:"none"}}
                     >
-                        <Button
->
+                        <Button>
                             Register
                         </Button>
                     </Link>

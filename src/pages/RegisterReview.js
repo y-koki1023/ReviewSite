@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
@@ -39,8 +40,17 @@ function RegisterReview(props) {
         }
     }
 
+    const handleLogin = () => {
+        if (props.username === ""){
+            return(
+                <Redirect to= "/" />
+            )
+        }
+    }
+
     return(
-        <div>
+        <div className = "RegisterReviewWrapper">
+            {handleLogin()}
             <ProgressModal open = {props.isFetching}/>
             <Header/>
             <div className = "RegisterReviewBody">
@@ -96,6 +106,7 @@ function RegisterReview(props) {
 const mapStateToProps = state => {
     return {
         account_id : state.Login.account_id,
+        username:  state.Login.username,
         isFetching : state.RegisterReview.isFetching
     }
 }

@@ -1,3 +1,10 @@
+.RegisterReviewWrapper{
+    min-height: 100vh;
+    position: relative;
+    padding-top: 10vh;
+    padding-bottom: 30vh;
+    box-sizing: border-box;
+}
 .RegisterReviewBody{
     margin-left:20%;
     margin-right:20%;

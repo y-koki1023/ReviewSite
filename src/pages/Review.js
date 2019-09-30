@@ -21,7 +21,7 @@ function Review(props) {
     },[])
 
     return (
-        <div>
+        <div className = "ReviewWrapper">
             <Header/>
             <Paper className = "ReviewBody">
                 <Typography variant = "h4"> {props.data.title} </Typography>
@@ -40,13 +40,14 @@ function Review(props) {
 
 const mapTags = (tags) => {
     return tags.map( (tag,index) => (
-        <Button
-            className = "ReviewTag"
-            key={index}
-            
-        > 
-            {tag.title} 
-        </Button>
+        <Link to={`/SearchReview/${tag.title}/1`}>
+            <Button
+                className = "ReviewTag"
+                key={index}
+            > 
+                {tag.title} 
+            </Button>
+        </Link>
     ))
 }
 const mapStateToProps = state => {

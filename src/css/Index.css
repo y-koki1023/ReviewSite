@@ -1,3 +1,10 @@
+.IndexWrapper{
+    min-height: 100vh;
+    position: relative;
+    padding-top: 10vh;
+    padding-bottom: 30vh;
+    box-sizing: border-box;
+}
 .IndexBlurBg{
     background: url(../mainImage.jpg) no-repeat center;
     height: 60vh;
@@ -41,7 +48,7 @@
     width:30%;
     padding-top: 1%;
     padding-left:1%;
-    height:30vh;
+    min-height:30vh;
     margin-left: 2.5%;
     margin-right: 2.5%;
     

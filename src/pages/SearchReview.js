@@ -16,7 +16,7 @@ function SearchReview (props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     const reviewList = props.reviews.map((review,index) => (
-        <ReviewButton key = {index} title = {review.title} reviewID = {review.id}/>
+        <ReviewButton key = {index} title = {review.title} reviewID = {review.id} variant="h4" />
     ))
     return (
         <div className = 'SearchReviewWrapper'>

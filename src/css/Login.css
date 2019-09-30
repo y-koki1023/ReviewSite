@@ -1,7 +1,15 @@
+.LoginWrapper{
+    min-height: 30vh;
+    position: relative;
+    padding-top: 10vh;
+    padding-bottom: 30vh;
+    box-sizing: border-box;
+}
 .LoginBody{
     margin: 10% 20%;
     padding: 5%;
 }
+
 .LoginTextBox{
     margin-top: 5%;
     display: flex;
