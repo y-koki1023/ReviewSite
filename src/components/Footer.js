@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography'
 import '../css/Footer.css'
 function Footer(){
     return(
-        <div className = "FooterBody">
+        <div className = "FooterWrapper">
             <Grid container spacing={2} style={{display:"flex"}}>
                 <Grid item xs={2}>
                     <a href="policy"> 
