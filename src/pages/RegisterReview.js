@@ -18,6 +18,7 @@ function RegisterReview(props) {
     const [content, setContent] = useState("")
     const [tag, setTag] = useState("")
     const [tags, setTags] = useState([])
+    const [isPost, setPost] = useState(false)
 
     const handleTextField = (e, type) => {
         if(type === 'title'){
@@ -48,9 +49,15 @@ function RegisterReview(props) {
         }
     }
 
+    const handlePost = () => {
+        props.postReview(title,content,tags,props.account_id)
+        setPost(true)
+    }
+
     return(
         <div className = "RegisterReviewWrapper">
             {handleLogin()}
+            {isPost ? <Redirect to = "/" /> : "" }
             <ProgressModal open = {props.isFetching}/>
             <Header/>
             <div className = "RegisterReviewBody">
@@ -92,7 +99,7 @@ function RegisterReview(props) {
                             <Button onClick = {addNewTag}> Add New Tag </Button>
                         </div>
                             <Button 
-                                onClick = {() => props.postReview(title,content,tags,props.account_id)}> 
+                                onClick = { () => handlePost() }> 
                                 POST 
                             </Button>
                     </div>
@@ -107,7 +114,7 @@ const mapStateToProps = state => {
     return {
         account_id : state.Login.account_id,
         username:  state.Login.username,
-        isFetching : state.RegisterReview.isFetching
+        isFetching : state.RegisterReview.isFetching,
     }
 }
 
